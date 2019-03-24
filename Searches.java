@@ -101,7 +101,7 @@ class Searches{
     return counter;
   }
 
-  //Função Recursiva que escolhe a próxima jogada
+  //Função Recursiva que escolhe a próxima jogada do MiniMax
   public static int Jogada_Minimax(int profundidade_final,int profundidade,Node Pai){
     if(Pai.movimento == 10 && Pai.Pai.movimento != 11) return value_board(Pai.Pai.Jogo);
     else if(Pai.movimento == 10)return -513;
@@ -140,8 +140,8 @@ class Searches{
       else return valor;
     }
   }
-  //Mudar a função de forma a analizar os filhos um a um dentro da função que analiza os valores
-  //Colocar também a parte da programação dinámica
+  
+  //Função Recursiva que escolhe a próxima jogada do AlphaBeta
   public static int Jogada_AlphaBeta(int profundidade_final,int profundidade,Node Pai,int alpha,int beta){
     if(Pai.movimento == 10 && Pai.Pai.movimento != 11) return value_board(Pai.Pai.Jogo);
     else if(Pai.movimento == 10)return -513;
