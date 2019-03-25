@@ -3,99 +3,86 @@ import java.util.*;
 class Searches{
   static Scanner stdin = new Scanner(System.in);
 
-  //Calcula o valor de uma jogada é auxiliar á Jogada_Minimax()
+  public static int value_X_O(int numX,int numO){
+    if(numX != 0 && numO != 0) return 0;
+    else if(numO == 0){
+      switch(numX){
+        case 1:
+          return 1;
+        case 2:
+          return 10;
+        case 3:
+          return 50;
+        case 4:
+          return 512;
+      }
+    }
+    else switch(numO){
+      case 1:
+        return 1;
+      case 2:
+        return 10;
+      case 3:
+        return 50;
+      case 4:
+        return 512;
+    }
+    return 0;
+  }
+
+  public static int value_board_linhas(int i, int j, FourLine Jogo){
+    int numX = 0, numO = 0;
+    for(int n = 0; n < 4; n++){
+      if(Jogo.Board[i][j+n] == 'X') numX += 1;
+      else if(Jogo.Board[i][j+n] == 'O') numO += 1;
+    }
+    return value_X_O(numX,numO);
+  }
+
+  public static int value_board_colunas(int i,int j, FourLine Jogo){
+    int numX = 0, numO = 0;
+    for(int n = 0; n < 4; n++){
+      if(Jogo.Board[i+n][j] == 'X') numX += 1;
+      else if(Jogo.Board[i+n][j] == 'O') numO += 1;
+    }
+    return value_X_O(numX,numO);
+  }
+
+  public static int value_board_Diagonais1(int i,int j,FourLine Jogo){
+    int numX = 0, numO = 0;
+    for(int n = 0; n < 4; n++){
+      if(Jogo.Board[i+n][j+n] == 'X') numX += 1;
+      else if(Jogo.Board[i+n][j+n] == 'O') numO += 1;
+    }
+    return value_X_O(numX,numO);
+  }
+
+  public static int value_board_Diagonais2(int i,int j,FourLine Jogo){
+    int numX = 0, numO = 0;
+    for(int n = 0; n < 4; n++){
+      if(Jogo.Board[i+n][j-n] == 'X') numX += 1;
+      else if(Jogo.Board[i+n][j-n] == 'O') numO += 1;
+    }
+    return value_X_O(numX,numO);
+  }
+
+  //Calcula o valor de uma jogada
   public static int value_board(FourLine Jogo){
-    int numX,numO;
     int counter = 0;
-    // Counter Linhas
-    for(int i = 5; i >= 0;i--){
-      for(int j = 0; j < 4;j++){
-        numX = 0;
-        numO = 0;
-        if(Jogo.Board[i][j] == 'X') numX++;
-        else if(Jogo.Board[i][j] == 'O')numO++;
-        if(Jogo.Board[i][j+1] == 'X') numX++;
-        else if(Jogo.Board[i][j+1] == 'O')numO++;
-        if(Jogo.Board[i][j+2] == 'X') numX++;
-        else if(Jogo.Board[i][j+2] == 'O')numO++;
-        if(Jogo.Board[i][j+3] == 'X') numX++;
-        else if(Jogo.Board[i][j+3] == 'O')numO++;
-        if(numX == 4)return 512;
-        else if(numO == 4)return -512;
-        else if(numO == 3 && numX == 0) counter -= 50;
-        else if(numO == 2 && numX == 0) counter -= 10;
-        else if(numO == 1 && numX == 0) counter -= 1;
-        else if(numX == 3 && numO == 0) counter += 50;
-        else if(numX == 2 && numO == 0) counter += 10;
-        else if(numX == 1 && numX == 0) counter += 1;
-      }
-    }
-    //Counter Colunas
-    for(int i = 5; i > 2;i--){
+    for(int i = 0; i < 6;i++){
       for(int j = 0; j < 7;j++){
-        numX = 0;
-        numO = 0;
-        if(Jogo.Board[i][j] == 'X') numX++;
-        else if(Jogo.Board[i][j] == 'O')numO++;
-        if(Jogo.Board[i-1][j] == 'X') numX++;
-        else if(Jogo.Board[i-1][j] == 'O')numO++;
-        if(Jogo.Board[i-2][j] == 'X') numX++;
-        else if(Jogo.Board[i-2][j] == 'O')numO++;
-        if(Jogo.Board[i-3][j] == 'X') numX++;
-        else if(Jogo.Board[i-3][j] == 'O')numO++;
-        if(numX == 4)return 512;
-        else if(numO == 4)return -512;
-        else if(numO == 3 && numX == 0) counter -= 50;
-        else if(numO == 2 && numX == 0) counter -= 10;
-        else if(numO == 1 && numX == 0) counter -= 1;
-        else if(numX == 3 && numO == 0) counter += 50;
-        else if(numX == 2 && numO == 0) counter += 10;
-        else if(numX == 1 && numX == 0) counter += 1;
-      }
-    }
-    //Counter Diagonais
-    for(int i = 5; i > 2;i--){
-      for(int j = 0; j < 4;j++){
-        numX = 0;
-        numO = 0;
-        if(Jogo.Board[i][j] == 'X') numX++;
-        else if(Jogo.Board[i][j] == 'O')numO++;
-        if(Jogo.Board[i-1][j+1] == 'X') numX++;
-        else if(Jogo.Board[i-1][j+1] == 'O')numO++;
-        if(Jogo.Board[i-2][j+2] == 'X') numX++;
-        else if(Jogo.Board[i-2][j+2] == 'O')numO++;
-        if(Jogo.Board[i-3][j+3] == 'X') numX++;
-        else if(Jogo.Board[i-3][j+3] == 'O')numO++;
-        if(numX == 4)return 512;
-        else if(numO == 4)return -512;
-        else if(numO == 3 && numX == 0) counter -= 50;
-        else if(numO == 2 && numX == 0) counter -= 10;
-        else if(numO == 1 && numX == 0) counter -= 1;
-        else if(numX == 3 && numO == 0) counter += 50;
-        else if(numX == 2 && numO == 0) counter += 10;
-        else if(numX == 1 && numX == 0) counter += 1;
-      }
-    }
-    for(int i = 5; i > 2;i--){
-      for(int j = 3; j < 7;j++){
-        numX = 0;
-        numO = 0;
-        if(Jogo.Board[i][j] == 'X') numX++;
-        else if(Jogo.Board[i][j] == 'O')numO++;
-        if(Jogo.Board[i-1][j-1] == 'X') numX++;
-        else if(Jogo.Board[i-1][j-1] == 'O')numO++;
-        if(Jogo.Board[i-2][j-2] == 'X') numX++;
-        else if(Jogo.Board[i-2][j-2] == 'O')numO++;
-        if(Jogo.Board[i-3][j-3] == 'X') numX++;
-        else if(Jogo.Board[i-3][j-3] == 'O')numO++;
-        if(numX == 4)return 512;
-        else if(numO == 4)return -512;
-        else if(numO == 3 && numX == 0) counter -= 50;
-        else if(numO == 2 && numX == 0) counter -= 10;
-        else if(numO == 1 && numX == 0) counter -= 1;
-        else if(numX == 3 && numO == 0) counter += 50;
-        else if(numX == 2 && numO == 0) counter += 10;
-        else if(numX == 1 && numX == 0) counter += 1;
+        if(j < 4) counter += value_board_linhas(i,j,Jogo);
+        if(counter >= 512) return 512;
+        if(counter <= -512) return -512;
+        if(i < 3) counter += value_board_colunas(i,j,Jogo);
+        if(counter >= 512) return 512;
+        if(counter <= -512) return -512;
+        if(i < 3 && j < 4)counter += value_board_Diagonais1(i,j,Jogo);
+        if(counter >= 512) return 512;
+        if(counter <= -512) return -512;
+        if(i < 3 && j > 2)counter += value_board_Diagonais2(i,j,Jogo);
+        if(counter >= 512) return 512;
+        if(counter <= -512) return -512;
       }
     }
     return counter;
@@ -110,16 +97,16 @@ class Searches{
     for(int i = 1; i < 8; i++){
       Pai.Filhos[i] = Pai.Fazer_Filho(i,Pai);
     }
-    for(int i = 1;i < 8;i++){
-      resultado_valor[i] = Jogada_Minimax(profundidade_final,profundidade-1,Pai.Filhos[i]);
-    }
     if(Pai.Jogador == 'X'){
+      int valor_filho = 0;
       int valor = 513;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
-        if(resultado_valor[i] == -513) continue;
-        if(resultado_valor[i] < valor){
-          valor = resultado_valor[i];
+        valor_filho = Jogada_Minimax(profundidade_final,profundidade-1,Pai.Filhos[i]);
+        //System.out.println(valor_filho);
+        if(valor_filho == -513) continue;
+        if(valor_filho < valor){
+          valor = valor_filho;
           resultado_movimento = i;
         }
       }
@@ -127,12 +114,15 @@ class Searches{
       else return valor;
     }
     else{
+      int valor_filho = 0;
       int valor = -513;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
-        if(resultado_valor[i] == -513) continue;
-        if(resultado_valor[i] > valor){
-          valor = resultado_valor[i];
+        valor_filho = Jogada_Minimax(profundidade_final,profundidade-1,Pai.Filhos[i]);
+        //System.out.println(valor_filho);
+        if(valor_filho == -513) continue;
+        if(valor_filho > valor){
+          valor = valor_filho;
           resultado_movimento = i;
         }
       }
