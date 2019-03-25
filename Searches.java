@@ -72,17 +72,17 @@ class Searches{
     for(int i = 0; i < 6;i++){
       for(int j = 0; j < 7;j++){
         if(j < 4) counter += value_board_linhas(i,j,Jogo);
-        if(counter >= 512) return 512;
-        if(counter <= -512) return -512;
+        //if(counter >= 512) return 512;
+        //if(counter <= -512) return -512;
         if(i < 3) counter += value_board_colunas(i,j,Jogo);
-        if(counter >= 512) return 512;
-        if(counter <= -512) return -512;
+        //if(counter >= 512) return 512;
+        //if(counter <= -512) return -512;
         if(i < 3 && j < 4)counter += value_board_Diagonais1(i,j,Jogo);
-        if(counter >= 512) return 512;
-        if(counter <= -512) return -512;
+        //if(counter >= 512) return 512;
+        //if(counter <= -512) return -512;
         if(i < 3 && j > 2)counter += value_board_Diagonais2(i,j,Jogo);
-        if(counter >= 512) return 512;
-        if(counter <= -512) return -512;
+        //if(counter >= 512) return 512;
+        //if(counter <= -512) return -512;
       }
     }
     return counter;
@@ -99,12 +99,11 @@ class Searches{
     }
     if(Pai.Jogador == 'X'){
       int valor_filho = 0;
-      int valor = 513;
+      int valor = Integer.MAX_VALUE;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
         valor_filho = Jogada_Minimax(profundidade_final,profundidade-1,Pai.Filhos[i]);
-        System.out.println(valor_filho);
-        if(valor_filho == -513) continue;
+        if(valor_filho == Integer.MIN_VALUE) continue;
         if(valor_filho < valor){
           valor = valor_filho;
           resultado_movimento = i;
@@ -115,12 +114,11 @@ class Searches{
     }
     else{
       int valor_filho = 0;
-      int valor = -513;
+      int valor = Integer.MIN_VALUE;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
         valor_filho = Jogada_Minimax(profundidade_final,profundidade-1,Pai.Filhos[i]);
-        System.out.println(valor_filho);
-        if(valor_filho == -513) continue;
+        if(valor_filho == Integer.MIN_VALUE) continue;
         if(valor_filho > valor){
           valor = valor_filho;
           resultado_movimento = i;
@@ -134,19 +132,18 @@ class Searches{
   //Função Recursiva que escolhe a próxima jogada do AlphaBeta
   public static int Jogada_AlphaBeta(int profundidade_final,int profundidade,Node Pai,int alpha,int beta){
     if(Pai.movimento == 10 && Pai.Pai.movimento != 11) return value_board(Pai.Pai.Jogo);
-    else if(Pai.movimento == 10)return -513;
+    else if(Pai.movimento == 10)return Integer.MIN_VALUE;
     if(profundidade == 0) return value_board(Pai.Jogo);
     for(int i = 1; i < 8; i++){
       Pai.Filhos[i] = Pai.Fazer_Filho(i,Pai);
     }
     if(Pai.Jogador == 'X'){
-      int valor = 513;
+      int valor = Integer.MAX_VALUE;
       int valor_filho = 0;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
         valor_filho = Jogada_AlphaBeta(profundidade_final,profundidade-1,Pai.Filhos[i],alpha,beta);
-        System.out.println(valor_filho);
-        if(valor_filho == -513) continue;
+        if(valor_filho == Integer.MIN_VALUE) continue;
         if(valor_filho < valor){
           valor = valor_filho;
           beta = valor_filho;
@@ -159,12 +156,11 @@ class Searches{
     }
     else{
       int valor_filho = 0;
-      int valor = -513;
+      int valor = Integer.MIN_VALUE;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
         valor_filho = Jogada_AlphaBeta(profundidade_final,profundidade-1,Pai.Filhos[i],alpha,beta);
-        System.out.println(valor_filho);
-        if(valor_filho == -513) continue;
+        if(valor_filho == Integer.MIN_VALUE) continue;
         if(valor_filho > valor){
           valor = valor_filho;
           alpha = valor_filho;
@@ -249,7 +245,7 @@ class Searches{
       if(Jogo.Vitoria() == true) return;
       Node Node_Jogo = new Node(Jogo);
       System.out.print("MiniMax faça a sua Jogada:");
-      jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo,-513,513);
+      jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo,Integer.MIN_VALUE,Integer.MAX_VALUE);
       System.out.println(jogada);
       Jogo.inserirJogada('O',jogada);
       Jogo.PrintFourLine();
@@ -267,7 +263,7 @@ class Searches{
     for(i = 0; i < 21;i++){
       Node Node_Jogo = new Node(Jogo);
       System.out.print("MiniMax faça a sua Jogada:");
-      jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo,-513,513);
+      jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo,Integer.MIN_VALUE,Integer.MAX_VALUE);
       System.out.println(jogada);
       Jogo.inserirJogada('O',jogada);
       Jogo.PrintFourLine();
