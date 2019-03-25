@@ -19,13 +19,13 @@ class Searches{
     }
     else switch(numO){
       case 1:
-        return 1;
+        return -1;
       case 2:
-        return 10;
+        return -10;
       case 3:
-        return 50;
+        return -50;
       case 4:
-        return 512;
+        return -512;
     }
     return 0;
   }
@@ -103,7 +103,7 @@ class Searches{
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
         valor_filho = Jogada_Minimax(profundidade_final,profundidade-1,Pai.Filhos[i]);
-        //System.out.println(valor_filho);
+        System.out.println(valor_filho);
         if(valor_filho == -513) continue;
         if(valor_filho < valor){
           valor = valor_filho;
@@ -119,7 +119,7 @@ class Searches{
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
         valor_filho = Jogada_Minimax(profundidade_final,profundidade-1,Pai.Filhos[i]);
-        //System.out.println(valor_filho);
+        System.out.println(valor_filho);
         if(valor_filho == -513) continue;
         if(valor_filho > valor){
           valor = valor_filho;
@@ -130,7 +130,7 @@ class Searches{
       else return valor;
     }
   }
-  
+
   //Função Recursiva que escolhe a próxima jogada do AlphaBeta
   public static int Jogada_AlphaBeta(int profundidade_final,int profundidade,Node Pai,int alpha,int beta){
     if(Pai.movimento == 10 && Pai.Pai.movimento != 11) return value_board(Pai.Pai.Jogo);
@@ -145,6 +145,7 @@ class Searches{
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
         valor_filho = Jogada_AlphaBeta(profundidade_final,profundidade-1,Pai.Filhos[i],alpha,beta);
+        System.out.println(valor_filho);
         if(valor_filho == -513) continue;
         if(valor_filho < valor){
           valor = valor_filho;
@@ -162,6 +163,7 @@ class Searches{
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
         valor_filho = Jogada_AlphaBeta(profundidade_final,profundidade-1,Pai.Filhos[i],alpha,beta);
+        System.out.println(valor_filho);
         if(valor_filho == -513) continue;
         if(valor_filho > valor){
           valor = valor_filho;
