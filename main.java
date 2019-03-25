@@ -11,7 +11,7 @@ class main{
     FourLine Jogo = new FourLine();
     Jogo.PrintFourLine();
     for(i = 0; i < 21;i++){
-      System.out.println("Jogador 1 escolha a sua jogada:");
+      System.out.print("Jogador 1 escolha a sua jogada:");
       jogada = stdin.nextInt();
       while(Jogo.inserirJogada('X',jogada) == false){
         System.out.println("Jogada Impossivel!!");
@@ -20,7 +20,7 @@ class main{
       }
       Jogo.PrintFourLine();
       if(Jogo.Vitoria() == true) return;
-      System.out.println("Jogador 2 escolha a sua jogada:");
+      System.out.print("Jogador 2 escolha a sua jogada:");
       jogada = stdin.nextInt();
       while(Jogo.inserirJogada('O',jogada) == false){
         System.out.println("Jogada Impossivel!!");
@@ -38,7 +38,6 @@ class main{
     int profundidade = 0;
     int jogador = 0;
     System.out.println("Bem-Vindo ao 4 em Linha");
-    FourLine Jogo = new FourLine();
     System.out.println();
     System.out.println("1 -> MiniMax");
     System.out.println("2 -> Alpha-Beta");
@@ -68,7 +67,6 @@ class main{
         jogador = stdin.nextInt();
         break;
       case 4:
-        Jogo.PrintFourLine();
         Jogo_Humanos();
         break;
     }
