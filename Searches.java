@@ -93,16 +93,14 @@ class Searches{
   public static int Jogada_Minimax(int profundidade_final,int profundidade,Node Pai){
     if(profundidade == 0) return value_board(Pai.Jogo);
     int[] resultado_valor = new int[8];
-    for(int i = 1; i < 8; i++){
-      Pai.Filhos[i] = Pai.Fazer_Filho(i,Pai);
-    }
     if(Pai.Jogador == 'X'){
       int valor_filho = 0;
       int valor = Integer.MAX_VALUE;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
-        if(Pai.Filhos[i].movimento == 10) continue;
-        valor_filho = Jogada_Minimax(profundidade_final,profundidade-1,Pai.Filhos[i]);
+        Node Filho = Pai.Fazer_Filho(i,Pai);
+        if(Filho.movimento == 10) continue;
+        valor_filho = Jogada_Minimax(profundidade_final,profundidade-1,Filho);
         if(valor_filho < valor){
           valor = valor_filho;
           resultado_movimento = i;
@@ -116,8 +114,9 @@ class Searches{
       int valor = Integer.MIN_VALUE;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
-        if(Pai.Filhos[i].movimento == 10) continue;
-        valor_filho = Jogada_Minimax(profundidade_final,profundidade-1,Pai.Filhos[i]);
+        Node Filho = Pai.Fazer_Filho(i,Pai);
+        if(Filho.movimento == 10) continue;
+        valor_filho = Jogada_Minimax(profundidade_final,profundidade-1,Filho);
         if(valor_filho > valor){
           valor = valor_filho;
           resultado_movimento = i;
@@ -131,16 +130,14 @@ class Searches{
   //Função Recursiva que escolhe a próxima jogada do AlphaBeta
   public static int Jogada_AlphaBeta(int profundidade_final,int profundidade,Node Pai,int alpha,int beta){
     if(profundidade == 0) return value_board(Pai.Jogo);
-    for(int i = 1; i < 8; i++){
-      Pai.Filhos[i] = Pai.Fazer_Filho(i,Pai);
-    }
     if(Pai.Jogador == 'X'){
       int valor = Integer.MAX_VALUE;
       int valor_filho = 0;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
-        if(Pai.Filhos[i].movimento == 10) continue;
-        valor_filho = Jogada_AlphaBeta(profundidade_final,profundidade-1,Pai.Filhos[i],alpha,beta);
+        Node Filho = Pai.Fazer_Filho(i,Pai);
+        if(Filho.movimento == 10) continue;
+        valor_filho = Jogada_AlphaBeta(profundidade_final,profundidade-1,Filho,alpha,beta);
         if(valor_filho < valor){
           valor = valor_filho;
           beta = valor_filho;
@@ -156,8 +153,9 @@ class Searches{
       int valor = Integer.MIN_VALUE;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
-        if(Pai.Filhos[i].movimento == 10) continue;
-        valor_filho = Jogada_AlphaBeta(profundidade_final,profundidade-1,Pai.Filhos[i],alpha,beta);
+        Node Filho = Pai.Fazer_Filho(i,Pai);
+        if(Filho.movimento == 10) continue;
+        valor_filho = Jogada_AlphaBeta(profundidade_final,profundidade-1,Filho,alpha,beta);
         if(valor_filho > valor){
           valor = valor_filho;
           alpha = valor_filho;

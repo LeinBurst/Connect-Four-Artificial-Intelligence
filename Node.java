@@ -1,7 +1,6 @@
 import java.util.*;
 
 class Node{
-  Node[] Filhos;
   Node Pai;
   int movimento;
   char Jogador;
@@ -9,7 +8,6 @@ class Node{
 
   //Inicializa um nó genérico atraves de uma board
   Node(FourLine Board){
-    this.Filhos = new Node[8];
     this.Pai = null;
     this.movimento = 11;
     this.Jogador = 'X';
@@ -17,7 +15,6 @@ class Node{
   }
   //Inicializa um nó atraves de uma board o seu Pai movimento e o Jogador
   Node(FourLine Board,Node Pai,int movimento,char Jogador){
-    this.Filhos = new Node[8];
     this.Pai = Pai;
     this.movimento = movimento;
     this.Jogador = Jogador;
