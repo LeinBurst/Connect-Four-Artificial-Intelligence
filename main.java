@@ -69,6 +69,11 @@ class main{
       case 4:
         Jogo_Humanos();
         break;
+      case 5:
+        System.out.print("Indique a profundidade desejada para o MiniMax:");
+        profundidade = stdin.nextInt();
+        Searches.Jogo_Bots(profundidade);
+        break;
     }
   }
 }

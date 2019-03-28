@@ -276,4 +276,29 @@ class Searches{
     }
     System.out.println("Empate (╯°O°）╯  ┻━┻");
   }
+
+  public static void Jogo_Bots(int profundidade){
+    int i = 0;
+    int jogada = 0;
+    FourLine Jogo = new FourLine();
+    Jogo.PrintFourLine();
+    for(i = 0; i < 21;i++){
+      Node Node_Jogo1 = new Node(Jogo);
+      //System.out.print("MiniMax faça a sua Jogada:");
+      //jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo1,Integer.MIN_VALUE,Integer.MAX_VALUE);
+      jogada = Jogada_Minimax(profundidade,profundidade,Node_Jogo1);
+      System.out.println(jogada);
+      Jogo.inserirJogada('X',jogada);
+      Jogo.PrintFourLine();
+      if(Jogo.Vitoria() == true) return;
+      Node Node_Jogo2 = new Node(Jogo);
+      //jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo2,Integer.MIN_VALUE,Integer.MAX_VALUE);
+      jogada = Jogada_Minimax(profundidade,profundidade,Node_Jogo2);
+      System.out.println(jogada);
+      Jogo.inserirJogada('O',jogada);
+      Jogo.PrintFourLine();
+      if(Jogo.Vitoria() == true) return;
+    }
+    System.out.println("Empate (╯°O°）╯  ┻━┻");
+  }
 }
