@@ -90,7 +90,6 @@ class Searches{
 
   //Função Recursiva que escolhe a próxima jogada do MiniMax
   public static int Jogada_Minimax(int profundidade_final,int profundidade,Node Pai){
-    if(Pai.movimento == 10)return Integer.MIN_VALUE;
     if(profundidade == 0) return value_board(Pai.Jogo);
     int[] resultado_valor = new int[8];
     for(int i = 1; i < 8; i++){
@@ -101,8 +100,8 @@ class Searches{
       int valor = Integer.MAX_VALUE;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
+        if(Pai.Filhos[i].movimento == 10) continue;
         valor_filho = Jogada_Minimax(profundidade_final,profundidade-1,Pai.Filhos[i]);
-        if(valor_filho == Integer.MIN_VALUE) continue;
         if(valor_filho < valor){
           valor = valor_filho;
           resultado_movimento = i;
@@ -116,8 +115,8 @@ class Searches{
       int valor = Integer.MIN_VALUE;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
+        if(Pai.Filhos[i].movimento == 10) continue;
         valor_filho = Jogada_Minimax(profundidade_final,profundidade-1,Pai.Filhos[i]);
-        if(valor_filho == Integer.MIN_VALUE) continue;
         if(valor_filho > valor){
           valor = valor_filho;
           resultado_movimento = i;
@@ -130,8 +129,6 @@ class Searches{
 
   //Função Recursiva que escolhe a próxima jogada do AlphaBeta
   public static int Jogada_AlphaBeta(int profundidade_final,int profundidade,Node Pai,int alpha,int beta){
-    if(Pai.movimento == 10 && Pai.Pai.movimento != 11) return -513;
-    else if(Pai.movimento == 10)return Integer.MIN_VALUE;
     if(profundidade == 0) return value_board(Pai.Jogo);
     for(int i = 1; i < 8; i++){
       Pai.Filhos[i] = Pai.Fazer_Filho(i,Pai);
@@ -141,8 +138,8 @@ class Searches{
       int valor_filho = 0;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
+        if(Pai.Filhos[i].movimento == 10) continue;
         valor_filho = Jogada_AlphaBeta(profundidade_final,profundidade-1,Pai.Filhos[i],alpha,beta);
-        if(valor_filho == Integer.MIN_VALUE) continue;
         if(valor_filho < valor){
           valor = valor_filho;
           beta = valor_filho;
@@ -158,8 +155,8 @@ class Searches{
       int valor = Integer.MIN_VALUE;
       int resultado_movimento = -1;
       for(int i = 1; i < 8;i++){
+        if(Pai.Filhos[i].movimento == 10) continue;
         valor_filho = Jogada_AlphaBeta(profundidade_final,profundidade-1,Pai.Filhos[i],alpha,beta);
-        if(valor_filho == Integer.MIN_VALUE) continue;
         if(valor_filho > valor){
           valor = valor_filho;
           alpha = valor_filho;
