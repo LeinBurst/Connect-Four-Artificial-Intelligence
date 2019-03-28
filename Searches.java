@@ -90,8 +90,7 @@ class Searches{
 
   //Função Recursiva que escolhe a próxima jogada do MiniMax
   public static int Jogada_Minimax(int profundidade_final,int profundidade,Node Pai){
-    if(Pai.movimento == 10 && Pai.Pai.movimento != 11) return value_board(Pai.Pai.Jogo);
-    else if(Pai.movimento == 10)return -513;
+    if(Pai.movimento == 10)return Integer.MIN_VALUE;
     if(profundidade == 0) return value_board(Pai.Jogo);
     int[] resultado_valor = new int[8];
     for(int i = 1; i < 8; i++){
@@ -131,7 +130,7 @@ class Searches{
 
   //Função Recursiva que escolhe a próxima jogada do AlphaBeta
   public static int Jogada_AlphaBeta(int profundidade_final,int profundidade,Node Pai,int alpha,int beta){
-    if(Pai.movimento == 10 && Pai.Pai.movimento != 11) return value_board(Pai.Pai.Jogo);
+    if(Pai.movimento == 10 && Pai.Pai.movimento != 11) return -513;
     else if(Pai.movimento == 10)return Integer.MIN_VALUE;
     if(profundidade == 0) return value_board(Pai.Jogo);
     for(int i = 1; i < 8; i++){
