@@ -88,6 +88,7 @@ class Searches{
     return counter;
   }
 
+  //Controladores das Jogadas
   //Função Recursiva que escolhe a próxima jogada do MiniMax
   public static int Jogada_Minimax(int profundidade_final,int profundidade,Node Pai){
     if(profundidade == 0) return value_board(Pai.Jogo);
