@@ -185,7 +185,7 @@ class Searches{
       }
       Jogo.PrintFourLine();
       if(Jogo.Vitoria() == true) return;
-      Node Node_Jogo = new Node(Jogo);
+      Node Node_Jogo = new Node(Jogo,'X');
       System.out.print("MiniMax faça a sua Jogada:");
       jogada = Jogada_Minimax(profundidade,profundidade,Node_Jogo);
       System.out.println(jogada);
@@ -203,7 +203,7 @@ class Searches{
     FourLine Jogo = new FourLine();
     Jogo.PrintFourLine();
     for(i = 0; i < 21;i++){
-      Node Node_Jogo = new Node(Jogo);
+      Node Node_Jogo = new Node(Jogo,'X');
       System.out.print("MiniMax faça a sua Jogada:");
       jogada = Jogada_Minimax(profundidade,profundidade,Node_Jogo);
       System.out.println(jogada);
@@ -238,8 +238,8 @@ class Searches{
       }
       Jogo.PrintFourLine();
       if(Jogo.Vitoria() == true) return;
-      Node Node_Jogo = new Node(Jogo);
-      System.out.print("MiniMax faça a sua Jogada:");
+      Node Node_Jogo = new Node(Jogo,'X');
+      System.out.print("AlphaBeta faça a sua Jogada:");
       jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo,Integer.MIN_VALUE,Integer.MAX_VALUE);
       System.out.println(jogada);
       Jogo.inserirJogada('O',jogada);
@@ -256,8 +256,8 @@ class Searches{
     FourLine Jogo = new FourLine();
     Jogo.PrintFourLine();
     for(i = 0; i < 21;i++){
-      Node Node_Jogo = new Node(Jogo);
-      System.out.print("MiniMax faça a sua Jogada:");
+      Node Node_Jogo = new Node(Jogo,'X');
+      System.out.print("AlphaBeta faça a sua Jogada:");
       jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo,Integer.MIN_VALUE,Integer.MAX_VALUE);
       System.out.println(jogada);
       Jogo.inserirJogada('O',jogada);
@@ -281,7 +281,7 @@ class Searches{
     FourLine Jogo = new FourLine();
     Jogo.PrintFourLine();
     for(i = 0; i < 21;i++){
-      Node Node_Jogo1 = new Node(Jogo);
+      Node Node_Jogo1 = new Node(Jogo,'O');
       //System.out.print("MiniMax faça a sua Jogada:");
       //jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo1,Integer.MIN_VALUE,Integer.MAX_VALUE);
       jogada = Jogada_Minimax(profundidade,profundidade,Node_Jogo1);
@@ -289,7 +289,7 @@ class Searches{
       Jogo.inserirJogada('X',jogada);
       Jogo.PrintFourLine();
       if(Jogo.Vitoria() == true) return;
-      Node Node_Jogo2 = new Node(Jogo);
+      Node Node_Jogo2 = new Node(Jogo,'X');
       //jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo2,Integer.MIN_VALUE,Integer.MAX_VALUE);
       jogada = Jogada_Minimax(profundidade,profundidade,Node_Jogo2);
       System.out.println(jogada);

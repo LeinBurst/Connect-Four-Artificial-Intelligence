@@ -47,6 +47,14 @@ class FourLine{
     return true;
   }
 
+  int JogadasPossiveis(){
+    int counter = 0;
+    for(int j = 0; j < 7;j++){
+      if(this.Board[0][j] == '-') counter++;
+    }
+    return counter;
+  }
+
   //Função auxiliar da Vitoria() que verifica se já alguem tem quatro em Linha
   boolean VitoriaLinhas(char a,int i, int j){
     if(j < 4){
@@ -101,6 +109,28 @@ class FourLine{
       }
     }
     return false;
+  }
+
+  int NoPrint_Vitoria(){
+    for(int i = 5; i >= 0;i--){
+      for(int j = 0; j < 7;j++){
+        if(this.Board[i][j] != '-'){
+          if(VitoriaLinhas(this.Board[i][j],i,j) == true){
+            if(this.Board[i][j] == 'X')return 2;
+            else if(this.Board[i][j] == 'O')return 1;
+          }
+          else if(VitoriaColunas(this.Board[i][j],i,j) == true){
+            if(this.Board[i][j] == 'X')return 2;
+            else if(this.Board[i][j] == 'O')return 1;
+          }
+          else if(VitoriaDiagonais(this.Board[i][j],i,j) == true){
+            if(this.Board[i][j] == 'X')return 2;
+            else if(this.Board[i][j] == 'O')return 1;
+          }
+        }
+      }
+    }
+    return 0;
   }
 
 }
