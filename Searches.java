@@ -246,14 +246,8 @@ class Searches{
       }
       Jogo.PrintFourLine();
       if(Jogo.Vitoria() == true) return;
-<<<<<<< HEAD
       Node Node_Jogo = new Node(Jogo,'X');
       System.out.print("AlphaBeta faça a sua Jogada:");
-=======
-      Node Node_Jogo = new Node(Jogo);
-      System.out.print("AlphaBeta faça a sua Jogada:");
-      long tempo_inicial = System.currentTimeMillis();
->>>>>>> b9716ff97f923b1a2c9cacef21a120d43eea6ba9
       jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo,Integer.MIN_VALUE,Integer.MAX_VALUE);
       System.out.println(jogada);
       Jogo.inserirJogada('O',jogada);
@@ -273,14 +267,8 @@ class Searches{
     FourLine Jogo = new FourLine();
     Jogo.PrintFourLine();
     for(i = 0; i < 21;i++){
-<<<<<<< HEAD
       Node Node_Jogo = new Node(Jogo,'X');
       System.out.print("AlphaBeta faça a sua Jogada:");
-=======
-      Node Node_Jogo = new Node(Jogo);
-      System.out.print("AlphaBeta faça a sua Jogada:");
-      long tempo_inicial = System.currentTimeMillis();
->>>>>>> b9716ff97f923b1a2c9cacef21a120d43eea6ba9
       jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo,Integer.MIN_VALUE,Integer.MAX_VALUE);
       System.out.println(jogada);
       Jogo.inserirJogada('O',jogada);
