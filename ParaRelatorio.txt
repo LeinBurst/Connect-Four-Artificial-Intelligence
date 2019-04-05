@@ -1,0 +1,39 @@
+Boas pessoas lindas dps vão ter que por isto em palavras bonitas <3
+
+Primeiro para o Minimax -> 
+
+Então como sabem o Minimax procura todas as jogadas possíveis e escolhe a melhor ou uma das melhores(visto que não diferencia
+ganhar agora ou daqui a 10 jogadas)
+O nosso Minimax começa por criar um nó para o Jogo(Podes por uma foto do que a função Node guarda) em que nos encontramos
+no início desta Jogada.
+Dps usa a função recursiva chamada Jogada_Minimax(Podem por fotos fica sempre bonito) com 3 variáveis:
+  -> Profundidade usada como caso de paragem ou seja a função deixa de ser chamada recursivamente aps x profundidade
+  -> Profundidade_final esta profundidade serve para quando quando chegar a altura do fim desta função retornar o movimento
+e não valor do melhor nó
+  -> Pai é o Nó que vai ser usado nesta iteração da função seja para criar mais filhos ou para dar um valor.
+Dentro do Minimax temos ainda duas funções que verificam qual a melhor jogada a realizar seja para o Jogador X ou o Jogador O.
+Se for para o X a função vai escolher o maior valor possível entre os nós que existem e o O vai escolher o menor.
+
+
+Agora para o Alpha-Beta -> 
+
+O Alpha Beta acaba por ser exatamente o mesmo que o Minimax. A única diferença é a adição de 4 linhas de código e as variaveis
+alpha e beta na chamada recursiva da função.
+(Por imagem da Jogada_AlphaBeta com um quadrado em volta das linhas adicionas).
+Estas 4 linhas garantem que o AI não verifique nós redondantes que não levam a lado nenhum.
+
+Monte Carlo Search Tree(AKA Pain in the Ass)
+
+Então o Monte Carlo ao contrário do Minimax e AlphaBeta não é recursivo mas sim iterativo. E apesar de ser suposto um Deus
+em quando é aplicado em qualquer "Jogo", Mas o nosso nem um Demi-God é. Eu até me arriscaria a dizer que é Retardado
+Pronto. agora que já passaram as introduções. No MCTS(Monte Carlo Search Tree) tivemos que usar um Nó completamente diferente
+porque haviam muitas mais coisas a guardar(BAM Foto). Okay então na iteração i a primeira coisa a fazer é escolher um nó
+para efetuar o algoritmo através desta função (está naquela foto que mandei em papel também está la a explicar o que
+cada variável é tenta por bonitinho <3) repetimos o processo ate chegarmos a um nó sem bébés.
+Neste Nó vamos criar os seus respetivos filhos para todas as jogadas possíveis. E realizar simulações para cada um deles
+Após isto só nos falta atualizar o Num de Simulações e Vitórias de cada um dos nós e os seus pais até chegar ao primeiro
+pai de todos.
+O algoritmo é realizado um numero n de iterações dadas pelo utilizador(Por acaso aidna tenho que adicionar mas daqui
+a pouco já faço isso assim num instante).
+
+Acho que é isso se tiverem dúvidas perguntem <3 mas acho que já está
