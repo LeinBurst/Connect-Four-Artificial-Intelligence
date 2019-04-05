@@ -248,13 +248,13 @@ class Searches{
       if(Jogo.Vitoria() == true) return;
       Node Node_Jogo = new Node(Jogo,'X');
       System.out.print("AlphaBeta faça a sua Jogada:");
+      long tempo_inicial = System.currentTimeMillis();
       jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo,Integer.MIN_VALUE,Integer.MAX_VALUE);
+      long tempo_final = System.currentTimeMillis();
       System.out.println(jogada);
+      System.out.println("Tempo: " + (tempo_final-tempo_inicial) + "ms");
       Jogo.inserirJogada('O',jogada);
       Jogo.PrintFourLine();
-      long tempo_final = System.currentTimeMillis();
-      System.out.println("Tempo: " + (tempo_final-tempo_inicial) + "ms");
-      System.out.println("");
       if(Jogo.Vitoria() == true) return;
     }
     System.out.println("Empate (╯°O°）╯  ┻━┻");
@@ -269,13 +269,13 @@ class Searches{
     for(i = 0; i < 21;i++){
       Node Node_Jogo = new Node(Jogo,'X');
       System.out.print("AlphaBeta faça a sua Jogada:");
+      long tempo_inicial = System.currentTimeMillis();
       jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo,Integer.MIN_VALUE,Integer.MAX_VALUE);
+      long tempo_final = System.currentTimeMillis();
       System.out.println(jogada);
       Jogo.inserirJogada('O',jogada);
-      Jogo.PrintFourLine();
-      long tempo_final = System.currentTimeMillis();
       System.out.println("Tempo: " + (tempo_final-tempo_inicial) + "ms");
-      System.out.println("");
+      Jogo.PrintFourLine();
       if(Jogo.Vitoria() == true) return;
       System.out.print("Jogador 1 escolha a sua jogada:");
       jogada = stdin.nextInt();
