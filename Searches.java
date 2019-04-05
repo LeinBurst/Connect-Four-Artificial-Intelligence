@@ -187,10 +187,14 @@ class Searches{
       if(Jogo.Vitoria() == true) return;
       Node Node_Jogo = new Node(Jogo,'X');
       System.out.print("MiniMax faça a sua Jogada:");
+      long tempo_inicial = System.currentTimeMillis();
       jogada = Jogada_Minimax(profundidade,profundidade,Node_Jogo);
       System.out.println(jogada);
       Jogo.inserirJogada('O',jogada);
       Jogo.PrintFourLine();
+      long tempo_final = System.currentTimeMillis();
+      System.out.println("Tempo: " + (tempo_final-tempo_inicial) + "ms");
+      System.out.println("");
       if(Jogo.Vitoria() == true) return;
     }
     System.out.println("Empate (╯°O°）╯  ┻━┻");
@@ -205,10 +209,14 @@ class Searches{
     for(i = 0; i < 21;i++){
       Node Node_Jogo = new Node(Jogo,'X');
       System.out.print("MiniMax faça a sua Jogada:");
+      long tempo_inicial = System.currentTimeMillis();
       jogada = Jogada_Minimax(profundidade,profundidade,Node_Jogo);
       System.out.println(jogada);
       Jogo.inserirJogada('O',jogada);
       Jogo.PrintFourLine();
+      long tempo_final = System.currentTimeMillis();
+      System.out.println("Tempo: " + (tempo_final-tempo_inicial) + "ms");
+      System.out.println("");
       if(Jogo.Vitoria() == true) return;
       System.out.print("Jogador 1 escolha a sua jogada:");
       jogada = stdin.nextInt();
@@ -238,12 +246,21 @@ class Searches{
       }
       Jogo.PrintFourLine();
       if(Jogo.Vitoria() == true) return;
+<<<<<<< HEAD
       Node Node_Jogo = new Node(Jogo,'X');
       System.out.print("AlphaBeta faça a sua Jogada:");
+=======
+      Node Node_Jogo = new Node(Jogo);
+      System.out.print("AlphaBeta faça a sua Jogada:");
+      long tempo_inicial = System.currentTimeMillis();
+>>>>>>> b9716ff97f923b1a2c9cacef21a120d43eea6ba9
       jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo,Integer.MIN_VALUE,Integer.MAX_VALUE);
       System.out.println(jogada);
       Jogo.inserirJogada('O',jogada);
       Jogo.PrintFourLine();
+      long tempo_final = System.currentTimeMillis();
+      System.out.println("Tempo: " + (tempo_final-tempo_inicial) + "ms");
+      System.out.println("");
       if(Jogo.Vitoria() == true) return;
     }
     System.out.println("Empate (╯°O°）╯  ┻━┻");
@@ -256,12 +273,21 @@ class Searches{
     FourLine Jogo = new FourLine();
     Jogo.PrintFourLine();
     for(i = 0; i < 21;i++){
+<<<<<<< HEAD
       Node Node_Jogo = new Node(Jogo,'X');
       System.out.print("AlphaBeta faça a sua Jogada:");
+=======
+      Node Node_Jogo = new Node(Jogo);
+      System.out.print("AlphaBeta faça a sua Jogada:");
+      long tempo_inicial = System.currentTimeMillis();
+>>>>>>> b9716ff97f923b1a2c9cacef21a120d43eea6ba9
       jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo,Integer.MIN_VALUE,Integer.MAX_VALUE);
       System.out.println(jogada);
       Jogo.inserirJogada('O',jogada);
       Jogo.PrintFourLine();
+      long tempo_final = System.currentTimeMillis();
+      System.out.println("Tempo: " + (tempo_final-tempo_inicial) + "ms");
+      System.out.println("");
       if(Jogo.Vitoria() == true) return;
       System.out.print("Jogador 1 escolha a sua jogada:");
       jogada = stdin.nextInt();
@@ -284,15 +310,23 @@ class Searches{
       Node Node_Jogo1 = new Node(Jogo,'O');
       //System.out.print("MiniMax faça a sua Jogada:");
       //jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo1,Integer.MIN_VALUE,Integer.MAX_VALUE);
+      long tempo_inicial = System.currentTimeMillis();
       jogada = Jogada_Minimax(profundidade,profundidade,Node_Jogo1);
       System.out.println(jogada);
+      long tempo_final = System.currentTimeMillis();
+      System.out.println("Tempo: " + (tempo_final-tempo_inicial) + "ms");
+      System.out.println("");
       Jogo.inserirJogada('X',jogada);
       Jogo.PrintFourLine();
       if(Jogo.Vitoria() == true) return;
       Node Node_Jogo2 = new Node(Jogo,'X');
       //jogada = Jogada_AlphaBeta(profundidade,profundidade,Node_Jogo2,Integer.MIN_VALUE,Integer.MAX_VALUE);
+      tempo_inicial = System.currentTimeMillis();
       jogada = Jogada_Minimax(profundidade,profundidade,Node_Jogo2);
       System.out.println(jogada);
+      tempo_final = System.currentTimeMillis();
+      System.out.println("Tempo: " + (tempo_final-tempo_inicial) + "ms");
+      System.out.println("");
       Jogo.inserirJogada('O',jogada);
       Jogo.PrintFourLine();
       if(Jogo.Vitoria() == true) return;
