@@ -63,9 +63,13 @@ class main{
         else Searches.Jogo_AlphaBeta2(profundidade);
         break;
       case 3:
+        System.out.print("Escolha também quem é que vai primeiro 1 para Humano ou 2 para Computador:");
+        jogador = stdin.nextInt();
         System.out.print("Indique agora número de iterações desejadas para o MCTS:");
         profundidade = stdin.nextInt();
-        MCTS.Jogo(profundidade);
+        if(jogador == 1) MCTS.Jogo1(profundidade);
+        else MCTS.Jogo2(profundidade);
+
         break;
       case 4:
         Jogo_Humanos();

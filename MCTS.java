@@ -79,7 +79,7 @@ class MCTS{
     return Node_Jogo.Filhos[Melhor_Filho].movimento;
 }
 
-  public static void Jogo(int numJogos){
+  public static void Jogo1(int numJogos){
     int jogada = 0;
     FourLine Jogo = new FourLine();
     Jogo.PrintFourLine();
@@ -100,6 +100,31 @@ class MCTS{
       Jogo.inserirJogada('O',jogada);
       Jogo.PrintFourLine();
       if(Jogo.Vitoria() == true) return;
+    }
+    System.out.println("Empate (╯°O°）╯  ┻━┻");
+  }
+
+  public static void Jogo2(int numJogos){
+    int jogada = 0;
+    FourLine Jogo = new FourLine();
+    Jogo.PrintFourLine();
+    for(int i = 0; i < 21;i++){
+      if(Jogo.Vitoria() == true) return;
+      NodeMCTS Node_Jogo = new NodeMCTS(Jogo,'X');
+      System.out.print("Monte Carlo faça a sua Jogada:");
+      jogada = Jogada(numJogos,Node_Jogo);
+      System.out.println(jogada);
+      Jogo.inserirJogada('O',jogada);
+      Jogo.PrintFourLine();
+      if(Jogo.Vitoria() == true) return;
+      System.out.print("Jogador 1 escolha a sua jogada:");
+      jogada = stdin.nextInt();
+      while(Jogo.inserirJogada('X',jogada) == false){
+        System.out.println("Jogada Impossivel!!");
+        System.out.print("Insira Nova Jogada:");
+        jogada = stdin.nextInt();
+      }
+      Jogo.PrintFourLine();
     }
     System.out.println("Empate (╯°O°）╯  ┻━┻");
   }
