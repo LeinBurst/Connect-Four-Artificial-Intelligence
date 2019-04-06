@@ -37,3 +37,18 @@ O algoritmo é realizado um numero n de iterações dadas pelo utilizador(Por ac
 a pouco já faço isso assim num instante).
 
 Acho que é isso se tiverem dúvidas perguntem <3 mas acho que já está
+
+
+MCTS(Explicação geral) https://jeffbradberry.com/posts/2015/09/intro-to-monte-carlo-tree-search/ (site para as fotos)
+
+Então vou agora explicar o funcionamente do MCTS após n iterações no fim vou também explicar para a primeira iteração mas
+acaba por ser o mesmo. A nossa primeira tarefa é descobri qual o melhor Nó para fazer filhos e as suas respetivas simulações.
+Para escolher o Nó usamos a seguinte função(usa a que está no site com a adição de uma constante de Exploration a multiplicar
+pela raiz e na legenda fica constante de exploração ou parametro de exploração tambem Pode ser Como está na folha que já
+tinha mandado). Usamos esta função para escolher o melhor filho do nó atual ate chegarmos a um sem filhos.(Gráfico 1 do site)
+Ai o que temos a fazer é  criar os seus filhos possíveis e as suas respetivas simulações(Gráfico 2 && 3 do site)
+(Uma simulação é literalmente fazeruma simulação random de um jogo possível apartir daquele ponto) Após termos todas as
+simulações feitas apenas nos falta voltar para o topo da árvore e á medida que subimos temos que atualizar o numero de
+simulaçãoes de cada e as suas respetivas Vítorias(Gráfico 4 do site). Depois é voltar a repetir todo o processo.
+Na primeira a uníca diferença que temos é a escolha do nó porque obviamente só temos um portanto não existe a necessidade de
+aplicar a função.
